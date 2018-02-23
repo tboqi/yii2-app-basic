@@ -8,6 +8,13 @@ $config = [
         'admin' => [
             'class' => 'mdm\admin\Module',
             'layout' => 'left-menu',
+            'menus' => [
+                // 'assignment' => [
+                //     'label' => 'Grant Access', // change label
+                // ],
+                // 'route' => null, // disable menu
+            ],
+            'mainLayout' => '@app/views/layouts/main.php',
         ],
     ],
     'id' => 'basic',
@@ -26,8 +33,10 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
+            'identityClass' => 'mdm\admin\models\User',
+            'loginUrl' => ['admin/user/login'],
+            // 'identityClass' => 'app\models\User',
+            'enableAutoLogin' => false,
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -52,22 +61,20 @@ $config = [
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
         ],
-        /*
-    'urlManager' => [
-    'enablePrettyUrl' => true,
-    'showScriptName' => false,
-    'rules' => [
-    ],
-    ],
-     */
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [
+            ],
+        ],
     ],
     'params' => $params,
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
         'allowActions' => [
             'site/*',
-            'admin/*',
-            'some-controller/some-action',
+            // 'admin/*',
+            // 'some-controller/some-action',
             // The actions listed here will be allowed to everyone including guests.
             // So, 'admin/*' should not appear here in the production, of course.
             // But in the earlier stages of your development, you may probably want to
@@ -75,6 +82,7 @@ $config = [
             // otherwise you may not even take a first step.
         ],
     ],
+    'language' => 'zh-CN',
 ];
 
 if (YII_ENV_DEV) {
