@@ -5,12 +5,14 @@
 
 use app\assets\AppAsset;
 use app\widgets\Alert;
+use mdm\admin\components\MenuHelper;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 
 AppAsset::register($this);
+
 ?>
 <?php $this->beginPage();?>
 <!DOCTYPE html>
@@ -22,6 +24,11 @@ AppAsset::register($this);
     <?=Html::csrfMetaTags();?>
     <title><?=Html::encode($this->title);?></title>
     <?php $this->head();?>
+    <style type="text/css">
+        .ui-autocomplete {
+        top: 100px;
+    }
+</style>
 </head>
 <body>
 <?php $this->beginBody();?>
@@ -38,23 +45,28 @@ NavBar::begin([
 echo Nav::widget([
     'options' => ['class' => 'navbar-nav navbar-right'],
     'items' => [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
+        ['label' => '后台首页', 'url' => ['/admin/']],
+        // ['label' => 'About', 'url' => ['/site/about']],
+        // ['label' => 'Contact', 'url' => ['/site/contact']],
         Yii::$app->user->isGuest ? (
             // ['label' => 'Login', 'url' => ['/site/login']]
             ['label' => 'Login', 'url' => ['/admin/user/login']]
         ) : (
             '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
+            . Html::beginForm(['/admin/user/logout'], 'post')
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
+                '退出 (' . Yii::$app->user->identity->username . ')',
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()
             . '</li>'
         ),
     ],
+]);
+// var_dump(MenuHelper::getAssignedMenu(Yii::$app->user->id));exit;
+echo Nav::widget([
+    'options' => ['class' => 'navbar-nav navbar-left'],
+    'items' => MenuHelper::getAssignedMenu(Yii::$app->user->id),
 ]);
 NavBar::end();
 ?>
