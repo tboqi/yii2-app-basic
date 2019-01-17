@@ -62,7 +62,7 @@ $config = [
             'class' => 'yii\rbac\DbManager',
         ],
         'urlManager' => [
-            'enablePrettyUrl' => true,
+            'enablePrettyUrl' => false,
             'showScriptName' => false,
             'rules' => [
             ],
@@ -83,6 +83,7 @@ $config = [
         ],
     ],
     'language' => 'zh-CN',
+    'defaultRoute' => 'admin',
 ];
 
 if (YII_ENV_DEV) {
