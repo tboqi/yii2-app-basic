@@ -16,6 +16,45 @@ $config = [
             ],
             'mainLayout' => '@app/views/layouts/main.php',
         ],
+        'blog' => [
+            'class' => 'pendalf89\blog\Module',
+            // This option automatically translit entered titles
+            // from russian symbols to english on fly. Default false.
+            'autoTranslit' => true,
+            // Some options for CKEditor. Default custom options.
+            'editorOptions' => [],
+            // callback function for create post view url. Have $model argument.
+            'viewPostUrlCallback' => function ($model) {
+                return '/' . $model->alias;
+            },
+        ],
+        'filemanager' => [
+            'class' => 'pendalf89\filemanager\Module',
+            // Upload routes
+            'routes' => [
+                // Base absolute path to web directory
+                'baseUrl' => '',
+                // Base web directory url
+                'basePath' => '@frontend/web',
+                // Path for uploaded files in web directory
+                'uploadPath' => 'uploads',
+            ],
+            // Thumbnails info
+            'thumbs' => [
+                'small' => [
+                    'name' => 'Мелкий',
+                    'size' => [100, 100],
+                ],
+                'medium' => [
+                    'name' => 'Средний',
+                    'size' => [300, 200],
+                ],
+                'large' => [
+                    'name' => 'Большой',
+                    'size' => [500, 400],
+                ],
+            ],
+        ],
     ],
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
@@ -62,7 +101,7 @@ $config = [
             'class' => 'yii\rbac\DbManager',
         ],
         'urlManager' => [
-            'enablePrettyUrl' => false,
+            'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
@@ -73,6 +112,7 @@ $config = [
         'class' => 'mdm\admin\components\AccessControl',
         'allowActions' => [
             'site/*',
+            // 'blog/*',
             // 'admin/*',
             // 'some-controller/some-action',
             // The actions listed here will be allowed to everyone including guests.
