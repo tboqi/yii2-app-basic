@@ -21,14 +21,9 @@ AppAsset::register($this);
     <meta charset="<?=Yii::$app->charset;?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?=Html::csrfMetaTags();?>
+    <?php $this->registerCsrfMetaTags();?>
     <title><?=Html::encode($this->title);?></title>
     <?php $this->head();?>
-    <style type="text/css">
-        .ui-autocomplete {
-        top: 100px;
-    }
-</style>
 </head>
 <body>
 <?php $this->beginBody();?>
