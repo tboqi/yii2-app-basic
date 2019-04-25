@@ -1,3 +1,6 @@
+干净的后台管理系统
+--------------------
+
 安装git
 
 php ../composer.phar install
