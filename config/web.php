@@ -83,7 +83,7 @@ $config = [
         ],
     ],
     'language' => 'zh-CN',
-    'defaultRoute' => 'admin',
+    'defaultRoute' => 'site/index',
 ];
 
 if (YII_ENV_DEV) {
