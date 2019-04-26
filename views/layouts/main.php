@@ -40,12 +40,10 @@ NavBar::begin([
 echo Nav::widget([
     'options' => ['class' => 'navbar-nav navbar-right'],
     'items' => [
-        ['label' => '后台首页', 'url' => ['/admin/']],
-        // ['label' => 'About', 'url' => ['/site/about']],
-        // ['label' => 'Contact', 'url' => ['/site/contact']],
+        ['label' => 'About', 'url' => ['/site/about']],
+        ['label' => 'Contact', 'url' => ['/site/contact']],
         Yii::$app->user->isGuest ? (
-            // ['label' => 'Login', 'url' => ['/site/login']]
-            ['label' => 'Login', 'url' => ['/admin/user/login']]
+            ['label' => '管理', 'url' => ['/admin/']]
         ) : (
             '<li>'
             . Html::beginForm(['/admin/user/logout'], 'post')

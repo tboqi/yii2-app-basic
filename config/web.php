@@ -25,7 +25,8 @@ $config = [
             'editorOptions' => [],
             // callback function for create post view url. Have $model argument.
             'viewPostUrlCallback' => function ($model) {
-                return '/' . $model->alias;
+                //return '/blog/post/view?id=' . $model->id;
+                return '/view/' . $model->alias;
             },
         ],
         'filemanager' => [
@@ -104,6 +105,9 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'index' => 'site/index',
+                'posts' => 'site/posts',
+                'view/<alias:[\S]+>' => 'site/viewpost',
             ],
         ],
     ],

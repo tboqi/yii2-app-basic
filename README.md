@@ -1,3 +1,7 @@
+文章详情不显示
+搜索功能
+smarty
+
 安装git
 
 php ../composer.phar install
