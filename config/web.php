@@ -62,7 +62,7 @@ $config = [
             'class' => 'yii\rbac\DbManager',
         ],
         'urlManager' => [
-            'enablePrettyUrl' => false,
+            'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],

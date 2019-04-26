@@ -2,13 +2,14 @@
 
 namespace app\controllers;
 
+use app\models\ContactForm;
+use app\models\EntryForm;
+use app\models\LoginForm;
 use Yii;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\Response;
-use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
 
 class SiteController extends Controller
 {
@@ -124,5 +125,25 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+    /**
+     *
+     * @link(使用表单, https://www.yii-china.com/doc/detail/11)
+     * @return [type] [description]
+     */
+    public function actionEntry()
+    {
+        $model = new EntryForm();
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            // 验证 $model 收到的数据
+
+            // 做些有意义的事 ...
+
+            return $this->render('entry-confirm', ['model' => $model]);
+        } else {
+            // 无论是初始化显示还是数据验证错误
+            return $this->render('entry', ['model' => $model]);
+        }
     }
 }
