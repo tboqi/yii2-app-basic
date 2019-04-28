@@ -83,6 +83,7 @@ $config = [
         ],
     ],
     'language' => 'zh-CN',
+    'timeZone' => 'Asia/Shanghai',
     'defaultRoute' => 'site/index',
 ];
 
