@@ -1,7 +1,7 @@
 {
-    "name": "yiisoft/yii2-app-basic",
-    "description": "Yii 2 Basic Project Template",
-    "keywords": ["yii2", "framework", "basic", "project template"],
+    "name": "yiisoft/yii2-app-basic-admin",
+    "description": "Yii 2 Basic Project Template with module admin",
+    "keywords": ["yii2", "framework", "basic", "project template", "admin"],
     "homepage": "http://www.yiiframework.com/",
     "type": "project",
     "license": "BSD-3-Clause",
