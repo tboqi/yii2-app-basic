@@ -16,6 +16,14 @@ $config = [
             ],
             'mainLayout' => '@app/views/layouts/main.php',
         ],
+        'blogbackend' => [
+            'class' => 'funson86\blog\Module',
+            'controllerNamespace' => 'funson86\blog\controllers\backend',
+        ],
+        'blogfrontend' => [
+            'class' => 'funson86\blog\Module',
+            'controllerNamespace' => 'funson86\blog\controllers\frontend',
+        ],
     ],
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
@@ -62,29 +70,39 @@ $config = [
             'class' => 'yii\rbac\DbManager',
         ],
         'urlManager' => [
-            'enablePrettyUrl' => false,
+            'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '<controller:\w+>/<id:\d+>' => '<controller>/view',
+                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ],
+        ],
+        'formatter' => [ //for the showing of date datetime
+            'dateFormat' => 'yyyy-MM-dd',
+            'datetimeFormat' => 'yyyy-MM-dd HH:mm:ss',
+            'decimalSeparator' => ',',
+            'thousandSeparator' => ' ',
+            'currencyCode' => 'CNY',
         ],
     ],
     'params' => $params,
-    'as access' => [
-        'class' => 'mdm\admin\components\AccessControl',
-        'allowActions' => [
-            'site/*',
-            // 'admin/*',
-            // 'some-controller/some-action',
-            // The actions listed here will be allowed to everyone including guests.
-            // So, 'admin/*' should not appear here in the production, of course.
-            // But in the earlier stages of your development, you may probably want to
-            // add a lot of actions here until you finally completed setting up rbac,
-            // otherwise you may not even take a first step.
-        ],
-    ],
+    // 'as access' => [
+    //     'class' => 'mdm\admin\components\AccessControl',
+    //     'allowActions' => [
+    //         'site/*',
+    //         // 'admin/*',
+    //         // 'some-controller/some-action',
+    //         // The actions listed here will be allowed to everyone including guests.
+    //         // So, 'admin/*' should not appear here in the production, of course.
+    //         // But in the earlier stages of your development, you may probably want to
+    //         // add a lot of actions here until you finally completed setting up rbac,
+    //         // otherwise you may not even take a first step.
+    //     ],
+    // ],
     'language' => 'zh-CN',
     'timeZone' => 'Asia/Shanghai',
-    'defaultRoute' => 'site/index',
+    'defaultRoute' => 'blog',
 ];
 
 if (YII_ENV_DEV) {
