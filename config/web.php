@@ -9,12 +9,12 @@ $config = [
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
     ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => '',
+            'cookieValidationKey' => 'cookieValidationKeycookieValidationKeycookieValidationKey',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -33,6 +33,9 @@ $config = [
             // for the mailer to send real emails.
             'useFileTransport' => true,
         ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+        ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -44,13 +47,13 @@ $config = [
         ],
         'db' => $db,
         /*
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
-        ],
-        */
+    'urlManager' => [
+    'enablePrettyUrl' => true,
+    'showScriptName' => false,
+    'rules' => [
+    ],
+    ],
+     */
     ],
     'params' => $params,
 ];
