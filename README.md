@@ -1,7 +1,11 @@
+yii adminlte
+-------------
+https://github.com/dmstr/yii2-adminlte-asset
+https://getyii.com/topic/564
+
 安装git
-
+-------
 php ../composer.phar install
-
 <p align="center">
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
