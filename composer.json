@@ -41,12 +41,6 @@
         "post-create-project-cmd": [
             "yii\\composer\\Installer::postCreateProject",
             "yii\\composer\\Installer::postInstall"
-        ],
-        "post-install-cmd": [
-            "app\\components\\ComposerInstaller::initProject"
-        ],
-        "post-update-cmd": [
-            "app\\components\\ComposerInstaller::initProject"
         ]
     },
     "extra": {

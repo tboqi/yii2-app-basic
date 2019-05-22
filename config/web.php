@@ -6,15 +6,15 @@ $db = require __DIR__ . '/db.php';
 $config = [
     'modules' => [
         'admin' => [
-            'class' => 'mdm\admin\Module',
-            // 'layout' => 'left-menu',
+            'class' => 'yiiapps\adminlte\Module',
+            'layout' => 'main',
             'menus' => [
                 // 'assignment' => [
                 //     'label' => 'Grant Access', // change label
                 // ],
                 // 'route' => null, // disable menu
             ],
-            'mainLayout' => '@app/views/layouts/main.php',
+            // 'mainLayout' => '@vendor/yiiapps/adminlte-asset-ext/views/layouts/main.php',
         ],
     ],
     'id' => 'basic',
@@ -23,6 +23,7 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
+        '@yiiapps/adminlte' => '@vendor/yiiapps/adminlte-asset-ext',
     ],
     'components' => [
         'request' => [
@@ -70,7 +71,7 @@ $config = [
         'view' => [
             'theme' => [
                 'pathMap' => [
-                    '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app',
+                    '@app/views/adminlte' => '@vendor/yiiapps/adminlte-asset-ext/views',
                 ],
             ],
         ],
