@@ -37,10 +37,19 @@
             "enabled": false
         }
     },
+    "autoload": {
+        "psr-4": { "yiiapps\\": "yiiapps" }
+    },
     "scripts": {
         "post-create-project-cmd": [
             "yii\\composer\\Installer::postCreateProject",
             "yii\\composer\\Installer::postInstall"
+        ],
+        "post-install-cmd": [
+            "yiiapps\\adminlte\\components\\ComposerInstaller::initProject"
+        ],
+        "post-update-cmd": [
+            "yiiapps\\adminlte\\components\\ComposerInstaller::initProject"
         ]
     },
     "extra": {
