@@ -9,12 +9,12 @@ $config = [
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
     ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => '',
+            'cookieValidationKey' => 'vHDPlgvHDNKVwLq39BvNT-x-Niy4NJ2CzKVJ2CzwfPvNT-x-Niy4IfILq39BMMlg',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -43,16 +43,39 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
     ],
     'params' => $params,
+
+    'language' => 'zh-CN',
+    'timeZone' => 'Asia/Shanghai',
+    'defaultRoute' => 'site/index',
+];
+
+$config['modules']['admin'] = [
+    'class' => 'yiiapps\adminlte\Module',
+    'layout' => 'main',
+    'menus' => [], //详见 mdmsoft/yii2-admin
+];
+$config['aliases']['@yiiapps/adminlte'] = '@vendor/yiiapps/adminlte-asset-ext';
+$config['components']['user'] = [
+    'identityClass' => 'mdm\admin\models\User',
+    'loginUrl' => ['admin/user/login'],
+    'enableAutoLogin' => false,
+];
+$config['components']['authManager'] = [
+    'class' => 'yii\rbac\DbManager',
+];
+$config['as access'] = [
+    'class' => 'mdm\admin\components\AccessControl',
+    'allowActions' => [
+        'site/*',
+    ],
 ];
 
 if (YII_ENV_DEV) {
